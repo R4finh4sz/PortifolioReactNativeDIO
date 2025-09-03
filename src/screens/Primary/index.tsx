@@ -1,39 +1,42 @@
 import React from 'react';
-import { StatusBar, Linking, StyleSheet } from 'react-native';
+import { StatusBar, Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 import { SocialButton } from '../../Components/SocialButton';
-import { 
-  Container, 
-  ProfileImage, 
-  ProfileName 
+import {
+  Container,
+  ProfileImage,
+  ProfileName
 } from './styles';
-const profileImage = require('../../assets/img/Perfil.jpeg');
+
+const profileImage = require('../../img/Perfil.jpeg');
 
 export function ProfileScreen() {
+  const navigation = useNavigation<any>(); 
 
   const handleOpenLink = (url: string) => {
     Linking.openURL(url).catch(err => console.error("Não foi possível carregar a página", err));
   };
 
   const handleSendEmail = () => {
-    Linking.openURL('mailto:rafael.souza@gmail.com.com?subject=Contato via App');
+    Linking.openURL('mailto:rafael.souza6657@gmail.com.com?subject=Contato via App');
   };
 
   return (
     <LinearGradient
       style={{ flex: 1 }}
-      colors={['#2B518A', '#1D3557']}
+      colors={['#2c65b9', '#071d3b']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
     >
-      <StatusBar 
-        barStyle="light-content" 
-        backgroundColor="transparent" 
-        translucent 
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
       />
       <Container>
         <ProfileImage source={profileImage} />
-      
+
         <ProfileName>Rafael Souza Santana</ProfileName>
 
         <SocialButton
@@ -52,6 +55,12 @@ export function ProfileScreen() {
           title="E-MAIL"
           icon="envelope"
           onPress={handleSendEmail}
+        />
+
+        <SocialButton
+          title="Habilidades"
+          icon="address-book"
+          onPress={() => navigation.navigate('Skills')} 
         />
       </Container>
     </LinearGradient>
