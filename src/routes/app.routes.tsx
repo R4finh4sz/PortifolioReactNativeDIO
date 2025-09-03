@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; 
-import { Groups } from "@screens/Groups";
-import { Players } from "@screens/Players";
-import { NewGroup } from "@screens/NewGroup";
+import { ProfileScreen } from "../screens/Primary";
+import { SkillsScreen } from "../screens/Skills";
 
 const {Navigator, Screen}= createNativeStackNavigator();
 
@@ -10,15 +9,11 @@ export function AppRoutes(){
         <Navigator screenOptions={{ headerShown: false }}>
             <Screen
                 name='groups'
-                component={Groups}
+                component={ProfileScreen}
                 />
-                <Screen
-                name='new'
-                component={NewGroup}
-                />
-                <Screen
-                name='players'
-                component={Players}
+            <Screen
+                name='Skills'
+                component={SkillsScreen}
                 />
         </Navigator>
     );
